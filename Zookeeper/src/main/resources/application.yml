@@ -1,0 +1,19 @@
+spring:
+  application:
+    name:Zoo
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181,localhost:2182,localhost:2183
+    dependencies:
+      Test1:
+        path: /Test1
+        loadBalancerType: RANDOM
+        contentTypeTemplate: application/vnd.zooService.$version+json
+        version: v1
+        headers:
+          header1:
+            - value1
+          header2:
+            - value2
+        required: false
+        stubs: org.springframework:foo:stubs
